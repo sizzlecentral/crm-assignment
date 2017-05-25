@@ -84,6 +84,11 @@ class Contact
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
+    @@contacts.each do |contact|
+      if contact == self
+        @@contacts.delete(contact)
+      end
+    end
   end
 
   # Feel free to add other methods here, if you need them.
@@ -97,9 +102,11 @@ sally = Contact.create("Sally", "Smith", "sally@smith.com", "Sally is okay.")
 
 # p Contact.all
 # p Contact.find(2)
-p Contact.find_by("email", "bob@jones.com") # How to search by any attribute?
+# p Contact.find_by("email", "bob@jones.com")
 # Contact.delete_all
 # p Contact.all
 # p sally.full_name
 # sally.update("first_name", "Sue")
 # p sally.full_name
+# sally.delete
+# p Contact.all
