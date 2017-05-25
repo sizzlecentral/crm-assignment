@@ -34,10 +34,8 @@ class Contact
   # This method should accept an id as an argument
   # and return the contact who has that id
   def self.find(id)
-    @@contacts.each do |contact|
-      if id == contact.id
-        return contact
-      end
+    @@contacts.find do |contact|
+      id == contact.id
     end
   end
 
@@ -70,9 +68,9 @@ class Contact
   # and then make the appropriate change to the contact
   def update(attribute, value)
     case attribute
-    when "first_name"
+    when "first name"
       self.first_name = value
-    when "last_name"
+    when "last name"
       self.last_name = value
     when "email"
       self.email = value
@@ -97,8 +95,8 @@ end
 
 # ----- End of Contact class ----- #
 
-instantiate = Contact.create("Bob", "Jones", "bob@jones.com", "Bob is cool.")
-sally = Contact.create("Sally", "Smith", "sally@smith.com", "Sally is okay.")
+# instantiate = Contact.create("Bob", "Jones", "bob@jones.com", "Bob is cool.")
+# sally = Contact.create("Sally", "Smith", "sally@smith.com", "Sally is okay.")
 
 # p Contact.all
 # p Contact.find(2)

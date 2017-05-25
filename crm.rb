@@ -2,7 +2,9 @@ require_relative 'contact'
 
 class CRM
 
-  def initialize
+  def initialize(name)
+    puts name
+    @name = name
   end
 
   def main_menu
@@ -15,12 +17,13 @@ class CRM
 
   def print_main_menu
     puts '[1] Add a new contact'
-    puts '[2] Modify and existing contact'
+    puts '[2] Modify an existing contact'
     puts '[3] Delete a contact'
     puts '[4] Display all the contacts'
     puts '[5] Search by attribute'
     puts '[6] Exit'
     puts 'Enter a number'
+    puts
   end
 
   def call_option(user_selected)
@@ -45,30 +48,36 @@ class CRM
     note = gets.chomp
     Contact.create(first_name, last_name, email, note)
     print 'The new contact has been added.'
+    puts
+    puts
   end
 
   def modify_existing_contact
     print 'Please enter an id for the contact to be modified: '
-    id = gets.chomp
-    Contact.find(id)
+    id = gets.chomp.to_i
+    contact = Contact.find(id)
     print 'Please enter the attribute you would like to modify: first name, last name, email or note: '
     attribute = gets.chomp
     print 'Please enter the new value to be saved: '
     value = gets.chomp
-    update(attribute, value)
+    contact.update(attribute, value)
     print 'The new information has been saved.'
+    puts
+    puts
   end
 
   def delete_contact
     print 'Please enter an id for the contact to be deleted: '
-    id = gets.chomp
-    Contact.find(id)
-    delete
+    id = gets.chomp.to_i
+    contact = Contact.find(id)
+    contact.delete
     print 'The contact has been deleted.'
+    puts
+    puts
   end
 
   def display_all_contacts
-    Contact.all
+    p Contact.all
   end
 
   def search_by_attribute
@@ -76,8 +85,10 @@ class CRM
     attribute = gets.chomp
     print 'Please enter the value to search for: '
     value = gets.chomp
-    Contact.find_by(attribute, value)
-    print 'The new information has been saved.'
+    contact = Contact.find_by(attribute, value)
+    print contact
+    puts
+    puts
   end
 
 end
