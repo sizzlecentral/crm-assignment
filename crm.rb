@@ -25,15 +25,25 @@ class CRM
 
   def call_option(user_selected)
     case user_selected
-    when 1 then add_new_contact
-    when 2 then modify_existing_contact
-    when 3 then delete_contact
-    when 4 then display_all_contacts
-    when 5 then search_by_attribute
-    when 6 then exit
+      when 1 then add_new_contact
+      when 2 then modify_existing_contact
+      when 3 then delete_contact
+      when 4 then display_all_contacts
+      when 5 then search_by_attribute
+      when 6 then exit
+    end
   end
 
   def add_new_contact
+    print 'Enter first name: '
+    first_name = gets.chomp
+    print 'Enter last name: '
+    last_name = gets.chomp
+    print 'Enter email address: '
+    email = gets.chomp
+    print 'Enter a note: '
+    note = gets.chomp
+    Contact.create(first_name, last_name, email, note)
   end
 
   def modify_existing_contact
@@ -49,3 +59,8 @@ class CRM
   end
 
 end
+
+# ----- End of CRM class ----- #
+
+
+p Contact.all
