@@ -1,3 +1,5 @@
+require_relative 'contact'
+
 class CRM
 
   def initialize
@@ -21,7 +23,14 @@ class CRM
     puts 'Enter a number'
   end
 
-  def call_option
+  def call_option(user_selected)
+    case user_selected
+    when 1 then add_new_contact
+    when 2 then modify_existing_contact
+    when 3 then delete_contact
+    when 4 then display_all_contacts
+    when 5 then search_by_attribute
+    when 6 then exit
   end
 
   def add_new_contact
