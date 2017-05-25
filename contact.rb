@@ -12,6 +12,8 @@ class Contact
     @last_name = last_name
     @email = email
     @note = note
+    @id = @@id
+    @@id += 1
   end
 
 # ----- Class Methods ----- #
@@ -21,10 +23,12 @@ class Contact
   def self.create(first_name, last_name, email, note)
     contact = Contact.new(first_name, last_name, email, note)
     @@contacts << contact
+    return contact
   end
 
   # This method should return all of the existing contacts
   def self.all
+    @@contacts
   end
 
   # This method should accept an id as an argument
@@ -68,4 +72,6 @@ end
 
 # ----- End of Contact class ----- #
 
-instantiate = Contact.new("Bob", "Jones", "bob@jones.com", "Bob is cool.")
+instantiate = Contact.create("Bob", "Jones", "bob@jones.com", "Bob is cool.")
+sally = Contact.create("Sally", "Smith", "sally@smith.com", "Sally is okay.")
+p Contact.all
