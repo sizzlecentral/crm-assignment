@@ -44,23 +44,42 @@ class CRM
     print 'Enter a note: '
     note = gets.chomp
     Contact.create(first_name, last_name, email, note)
+    print 'The new contact has been added.'
   end
 
   def modify_existing_contact
+    print 'Please enter an id for the contact to be modified: '
+    id = gets.chomp
+    Contact.find(id)
+    print 'Please enter the attribute you would like to modify: first name, last name, email or note: '
+    attribute = gets.chomp
+    print 'Please enter the new value to be saved: '
+    value = gets.chomp
+    update(attribute, value)
+    print 'The new information has been saved.'
   end
 
   def delete_contact
+    print 'Please enter an id for the contact to be deleted: '
+    id = gets.chomp
+    Contact.find(id)
+    delete
+    print 'The contact has been deleted.'
   end
 
   def display_all_contacts
+    Contact.all
   end
 
   def search_by_attribute
+    print 'Please enter the attribute you would like search by: first name, last name, email or note: '
+    attribute = gets.chomp
+    print 'Please enter the value to search for: '
+    value = gets.chomp
+    Contact.find_by(attribute, value)
+    print 'The new information has been saved.'
   end
 
 end
 
 # ----- End of CRM class ----- #
-
-
-p Contact.all
