@@ -33,7 +33,12 @@ class Contact
 
   # This method should accept an id as an argument
   # and return the contact who has that id
-  def self.find
+  def self.find(id)
+    @@contacts.each do |contact|
+      if id == contact.id
+        return contact
+      end
+    end
   end
 
   # This method should work similarly to the find method above
@@ -74,4 +79,6 @@ end
 
 instantiate = Contact.create("Bob", "Jones", "bob@jones.com", "Bob is cool.")
 sally = Contact.create("Sally", "Smith", "sally@smith.com", "Sally is okay.")
-p Contact.all
+
+# p Contact.all
+p Contact.find(2)
