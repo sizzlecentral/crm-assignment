@@ -46,7 +46,12 @@ class CRM
     email = gets.chomp
     print 'Enter a note: '
     note = gets.chomp
-    Contact.create(first_name, last_name, email, note)
+    contact = Contact.create(
+      first_name: first_name,
+      last_name:  last_name,
+      email:      email,
+      note:       note
+    )
     print 'The new contact has been added.'
     puts
     puts
