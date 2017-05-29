@@ -108,6 +108,8 @@ class Contact < ActiveRecord::Base
 #   # Feel free to add other methods here, if you need them.
 end
 
+Contact.auto_upgrade!
+
 # ----- End of Contact class ----- #
 
 # instantiate = Contact.create("Bob", "Jones", "bob@jones.com", "Bob is cool.")
