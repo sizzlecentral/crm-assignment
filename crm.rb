@@ -65,7 +65,8 @@ class CRM
     attribute = gets.chomp
     print 'Please enter the new value to be saved: '
     value = gets.chomp
-    contact.update(attribute, value)
+    my_hash = {attribute => value}
+    contact.update(my_hash)
     print 'The new information has been saved.'
     puts
     puts
@@ -90,7 +91,8 @@ class CRM
     attribute = gets.chomp
     print 'Please enter the value to search for: '
     value = gets.chomp
-    contact = Contact.find_by(attribute, value)
+    my_hash = {attribute => value}
+    contact = Contact.find_by(my_hash)
     print contact
     puts
     puts
